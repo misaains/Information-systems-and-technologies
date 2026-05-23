@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="440" viewBox="0 0 400 440">
+<rect width="100%" height="100%" fill="white"/>
+<path d="M 200 200 L 200 60 A 140 140 0 0 1 333.148 243.262 Z" fill="#4a76c5" stroke="white" stroke-width="2"/>
+<path d="M 200 200 L 333.148 243.262 A 140 140 0 0 1 86.7376 282.29 Z" fill="#ed7d31" stroke="white" stroke-width="2"/>
+<path d="M 200 200 L 86.7376 282.29 A 140 140 0 0 1 200 60 Z" fill="#a5a5a5" stroke="white" stroke-width="2"/>
+<rect x="30" y="380" width="14" height="14" fill="#4a76c5"/>
+<text x="50" y="392" font-size="15" font-family="serif">Учёба</text>
+<rect x="150" y="380" width="14" height="14" fill="#ed7d31"/>
+<text x="170" y="392" font-size="15" font-family="serif">Сон</text>
+<rect x="270" y="380" width="14" height="14" fill="#a5a5a5"/>
+<text x="290" y="392" font-size="15" font-family="serif">Отдых</text>
+
+</svg>
