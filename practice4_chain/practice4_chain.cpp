@@ -86,16 +86,16 @@ private:
 using FormulaPtr = std::unique_ptr<Formula>;
 
 
-class Atom : public Formula {
+class Text : public Formula {
     std::string text_;
     double fontSize_;
 
 public:
-    explicit Atom(std::string text, double fontSize = 22.0)
+    explicit Text(std::string text, double fontSize = 22.0)
         : text_(std::move(text)), fontSize_(fontSize) {}
 
     std::string typeName() const override {
-        return "Atom('" + text_ + "')";
+        return "Text('" + text_ + "')";
     }
 
     Box measure() const override {
@@ -376,15 +376,15 @@ int main() {
     std::system("chcp 65001 > nul");
 
     auto integral = std::make_unique<Integral>(
-        std::make_unique<Atom>("x"),
-        std::make_unique<Atom>("dx")
+        std::make_unique<Text>("x"),
+        std::make_unique<Text>("dx")
     );
 
     auto matrix = std::make_unique<Matrix>();
     const char* labels[3] = {"a", "b", "c"};
     for (int r = 0; r < 3; ++r)
         for (int c = 0; c < 3; ++c)
-            matrix->setCell(r, c, std::make_unique<Atom>(labels[c]));
+            matrix->setCell(r, c, std::make_unique<Text>(labels[c]));
 
     auto root = std::make_unique<Fraction>(
         std::move(integral),

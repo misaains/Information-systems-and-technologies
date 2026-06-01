@@ -21,12 +21,12 @@ public:
 
 using FormulaPtr = std::unique_ptr<Formula>;
 
-class Atom : public Formula {
+class Text : public Formula {
     std::string text_;
     double fontSize_;
 
 public:
-    explicit Atom(std::string text, double fontSize = 22.0)
+    explicit Text(std::string text, double fontSize = 22.0)
         : text_(std::move(text)), fontSize_(fontSize) {}
 
     Box measure() const override {
@@ -247,18 +247,18 @@ int main() {
     const char* letters[3] = {"a", "b", "c"};
     for (int r = 0; r < 3; ++r) {
         for (int c = 0; c < 3; ++c) {
-            matrix->setCell(r, c, std::make_unique<Atom>(letters[c]));
+            matrix->setCell(r, c, std::make_unique<Text>(letters[c]));
         }
     }
 
     auto integral = std::make_unique<Integral>(
-        std::make_unique<Atom>("x"),
-        std::make_unique<Atom>("dx")
+        std::make_unique<Text>("x"),
+        std::make_unique<Text>("dx")
     );
 
     auto subscript = std::make_unique<Fraction>(
         std::move(integral),
-        std::make_unique<Atom>("q")
+        std::make_unique<Text>("q")
     );
 
     auto root = std::make_unique<Indexed>(
