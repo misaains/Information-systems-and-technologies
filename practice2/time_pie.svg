@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="440" viewBox="0 0 400 440">
 <rect width="100%" height="100%" fill="white"/>
-<path d="M 200 200 L 200 60 A 140 140 0 0 1 243.262 333.148 Z" fill="#c0392b" stroke="white" stroke-width="2"/>
-<path d="M 200 200 L 243.262 333.148 A 140 140 0 0 1 62.4798 173.767 Z" fill="#2980b9" stroke="white" stroke-width="2"/>
-<path d="M 200 200 L 62.4798 173.767 A 140 140 0 0 1 200 60 Z" fill="#27ae60" stroke="white" stroke-width="2"/>
+<path d="M 200 200 L 200 60 A 140 140 0 0 1 295.837 302.056 Z" fill="#c0392b" stroke="white" stroke-width="2"/>
+<path d="M 200 200 L 295.837 302.056 A 140 140 0 0 1 62.4798 226.233 Z" fill="#2980b9" stroke="white" stroke-width="2"/>
+<path d="M 200 200 L 62.4798 226.233 A 140 140 0 0 1 200 60 Z" fill="#27ae60" stroke="white" stroke-width="2"/>
 <rect x="30" y="380" width="14" height="14" fill="#c0392b"/>
 <text x="50" y="392" font-size="15" font-family="serif">Учёба</text>
 <rect x="150" y="380" width="14" height="14" fill="#2980b9"/>

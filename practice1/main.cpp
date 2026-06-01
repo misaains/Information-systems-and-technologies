@@ -10,7 +10,6 @@
 struct Box {
     double w;
     double h;
-    double baseline;
 };
 
 class Formula {
@@ -33,13 +32,13 @@ public:
     Box measure() const override {
         double w = static_cast<double>(text_.size()) * fontSize_ * 0.55;
         double h = fontSize_ * 1.2;
-        double baseline = fontSize_ * 0.95;
-        return {w, h, baseline};
+        return {w, h};
     }
 
     void draw(std::ostream& out, double x, double y) const override {
         Box b = measure();
-        out << "<text x=\"" << x << "\" y=\"" << (y + b.baseline)
+        double baseline = fontSize_ * 0.95;
+        out << "<text x=\"" << x << "\" y=\"" << (y + baseline)
             << "\" font-family=\"Cambria Math, Times, serif\" font-style=\"italic\""
             << " font-size=\"" << fontSize_ << "\">" << text_ << "</text>\n";
     }
@@ -60,8 +59,7 @@ public:
         Box b = bottom_->measure();
         double w = std::max(t.w, b.w) + 2 * SIDE;
         double h = t.h + 2 * GAP + b.h;
-        double baseline = t.h + GAP;
-        return {w, h, baseline};
+        return {w, h};
     }
 
     void draw(std::ostream& out, double x, double y) const override {
@@ -96,7 +94,7 @@ public:
         double h = std::max(b.h, d.h) + 2 * V_PAD;
         double signW = h * 0.4;
         double w = signW + GAP + b.w + GAP + d.w;
-        return {w, h, h / 2.0};
+        return {w, h};
     }
 
     void draw(std::ostream& out, double x, double y) const override {
@@ -139,7 +137,7 @@ public:
         double subTop = b.h * (1.0 - DROP_FRAC);
         double w = b.w + sw;
         double h = std::max(b.h, subTop + sh);
-        return {w, h, b.baseline};
+        return {w, h};
     }
 
     void draw(std::ostream& out, double x, double y) const override {
@@ -196,7 +194,7 @@ public:
             if (r < 2) h += CELL_V_GAP;
         }
 
-        return {w, h, h / 2.0};
+        return {w, h};
     }
 
     void draw(std::ostream& out, double x, double y) const override {

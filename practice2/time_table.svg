@@ -4,12 +4,12 @@
 <rect x="15" y="15" width="330" height="100" fill="none" stroke="black" stroke-width="2"/>
 <line x1="15" y1="65" x2="345" y2="65" stroke="black" stroke-width="2"/>
 <text x="70" y="47.5" font-size="22" text-anchor="middle" font-family="serif">Учёба</text>
-<text x="70" y="97.5" font-size="22" text-anchor="middle" font-family="serif" fill="#c0392b">45%</text>
+<text x="70" y="97.5" font-size="22" text-anchor="middle" font-family="serif" fill="#c0392b">38%</text>
 <line x1="125" y1="15" x2="125" y2="115" stroke="black" stroke-width="2"/>
 <text x="180" y="47.5" font-size="22" text-anchor="middle" font-family="serif">Сон</text>
-<text x="180" y="97.5" font-size="22" text-anchor="middle" font-family="serif" fill="#2980b9">33%</text>
+<text x="180" y="97.5" font-size="22" text-anchor="middle" font-family="serif" fill="#2980b9">34%</text>
 <line x1="235" y1="15" x2="235" y2="115" stroke="black" stroke-width="2"/>
 <text x="290" y="47.5" font-size="22" text-anchor="middle" font-family="serif">Отдых</text>
-<text x="290" y="97.5" font-size="22" text-anchor="middle" font-family="serif" fill="#27ae60">22%</text>
+<text x="290" y="97.5" font-size="22" text-anchor="middle" font-family="serif" fill="#27ae60">28%</text>
 
 </svg>
