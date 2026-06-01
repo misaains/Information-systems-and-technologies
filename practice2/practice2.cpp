@@ -16,6 +16,13 @@ struct Slice {
 };
 
 
+static const std::string PALETTE[3] = {
+    "#c0392b",
+    "#2980b9",
+    "#27ae60"
+};
+
+
 class IObserver {
 public:
     virtual ~IObserver() = default;
@@ -137,7 +144,8 @@ public:
               << "\" font-size=\"22\" text-anchor=\"middle\" font-family=\"serif\">"
               << slices[i].name << "</text>\n";
             s << "<text x=\"" << (cx + CELL_W / 2) << "\" y=\"" << (y0 + CELL_H * 1.65)
-              << "\" font-size=\"22\" text-anchor=\"middle\" font-family=\"serif\">"
+              << "\" font-size=\"22\" text-anchor=\"middle\" font-family=\"serif\""
+              << " fill=\"" << PALETTE[i % 3] << "\">"
               << slices[i].percent << "%</text>\n";
         }
         return s.str();
@@ -197,7 +205,7 @@ public:
             double by = y0 - bh;
             s << "<rect x=\"" << bx << "\" y=\"" << by
               << "\" width=\"" << BAR_W << "\" height=\"" << bh
-              << "\" fill=\"#4a76c5\"/>\n";
+              << "\" fill=\"" << PALETTE[i % 3] << "\"/>\n";
             s << "<text x=\"" << (bx + BAR_W / 2) << "\" y=\"" << (y0 + 28)
               << "\" font-size=\"18\" text-anchor=\"middle\" font-family=\"serif\">"
               << slices[i].name << "</text>\n";
@@ -225,7 +233,7 @@ public:
 
     std::string renderBody() const override {
         const auto& slices = model_->slices();
-        const std::string colors[] = {"#4a76c5", "#ed7d31", "#a5a5a5", "#ffc000", "#70ad47"};
+        const std::string* colors = PALETTE;
         std::ostringstream s;
 
         double startAng = -90.0;
@@ -240,14 +248,14 @@ public:
 
             if (slices[i].percent == 100) {
                 s << "<circle cx=\"" << CX << "\" cy=\"" << CY
-                  << "\" r=\"" << R << "\" fill=\"" << colors[i % 5]
+                  << "\" r=\"" << R << "\" fill=\"" << colors[i % 3]
                   << "\" stroke=\"white\" stroke-width=\"2\"/>\n";
             } else if (slices[i].percent > 0) {
                 s << "<path d=\"M " << CX << " " << CY
                   << " L " << x1 << " " << y1
                   << " A " << R << " " << R << " 0 " << largeArc << " 1 "
                   << x2 << " " << y2 << " Z\" "
-                  << "fill=\"" << colors[i % 5] << "\" stroke=\"white\" stroke-width=\"2\"/>\n";
+                  << "fill=\"" << colors[i % 3] << "\" stroke=\"white\" stroke-width=\"2\"/>\n";
             }
 
             startAng = endAng;
@@ -257,7 +265,7 @@ public:
         for (std::size_t i = 0; i < slices.size(); ++i) {
             double sx = lx + i * 120;
             s << "<rect x=\"" << sx << "\" y=\"" << ly
-              << "\" width=\"14\" height=\"14\" fill=\"" << colors[i % 5] << "\"/>\n";
+              << "\" width=\"14\" height=\"14\" fill=\"" << colors[i % 3] << "\"/>\n";
             s << "<text x=\"" << (sx + 20) << "\" y=\"" << (ly + 12)
               << "\" font-size=\"15\" font-family=\"serif\">"
               << slices[i].name << "</text>\n";
@@ -314,7 +322,7 @@ private:
             }
         }
         if (model_->setPercents(ps)) {
-            std::cout << "Обновлено. Нажмите F5 в браузере.\n";
+            std::cout << "Обновлено.\n";
         }
     }
 

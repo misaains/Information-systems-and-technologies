@@ -17,9 +17,9 @@ struct Slice {
 
 
 static const std::string PALETTE[3] = {
-    "#c0392b",  // красный
-    "#2980b9",  // синий
-    "#27ae60"   // зелёный
+    "#c0392b",
+    "#2980b9",
+    "#27ae60"
 };
 
 
@@ -233,7 +233,7 @@ public:
 
     std::string renderBody() const override {
         const auto& slices = model_->slices();
-        const std::string* colors = PALETTE;  // красный / синий / зелёный
+        const std::string* colors = PALETTE;
         std::ostringstream s;
 
         double startAng = -90.0;

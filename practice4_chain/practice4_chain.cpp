@@ -53,8 +53,6 @@ public:
         return t == RequestType::Print ? "Print" : "Help";
     }
 
-    // Классический Chain of Responsibility: идём ВВЕРХ по parent_,
-    // первый предок, который содержит точку, обрабатывает запрос.
     bool bubbleUp(RequestType t, int x, int y) const {
         std::cout << "    -> " << typeName();
         if (contains(x, y)) {
@@ -67,8 +65,6 @@ public:
         return false;
     }
 
-    // То же, что bubbleUp, но без обработки (нужно диспетчеру, чтобы выбрать
-    // самого глубокого подходящего предка из нескольких цепочек).
     const Formula* findHandler(int x, int y) const {
         if (contains(x, y)) return this;
         if (parent_) return parent_->findHandler(x, y);
@@ -316,8 +312,6 @@ int depthOf(const Formula* n) {
     return d;
 }
 
-// Диспетчер. По требованию Сергея — рассылка начинается с листьев,
-// а ходим по дереву через parent_ (снизу вверх).
 void dispatch(const Formula* root, RequestType t, int x, int y) {
     std::vector<const Formula*> leaves;
     collectLeaves(root, leaves);
@@ -325,8 +319,6 @@ void dispatch(const Formula* root, RequestType t, int x, int y) {
     std::cout << "\n[" << Formula::requestName(t) << " " << x << "," << y
               << "] рассылка запроса от " << leaves.size() << " листьев:\n";
 
-    // Фаза 1: ищем лист, который сам содержит точку. Лист — это «верхняя»
-    // фигура на экране, поэтому если попал он, обрабатывает он.
     for (const Formula* leaf : leaves) {
         if (leaf->contains(x, y)) {
             std::cout << "  лист " << leaf->typeName()
@@ -337,9 +329,6 @@ void dispatch(const Formula* root, RequestType t, int x, int y) {
     }
     std::cout << "  ни один лист не содержит точку — поднимаемся по parent_\n";
 
-    // Фаза 2: ни один лист не подошёл. Поднимаемся вверх ОТ КАЖДОГО листа
-    // по parent_ и выбираем самого глубокого предка, который содержит точку.
-    // (Это эквивалентно «топовому» контейнеру на экране.)
     const Formula* best = nullptr;
     int bestDepth = -1;
     for (const Formula* leaf : leaves) {
@@ -387,8 +376,6 @@ void writeSvg(const Formula& root, const std::string& path, double margin = 30.0
 int main() {
     std::system("chcp 65001 > nul");
 
-    // Дерево: Дробь [Интеграл(x, dx) / Матрица 3x3].
-    // Никакого масштабирования — все bbox честные, для chain удобно.
     auto integral = std::make_unique<Integral>(
         std::make_unique<Atom>("x"),
         std::make_unique<Atom>("dx")

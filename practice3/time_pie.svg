@@ -3,9 +3,9 @@
 <rect width="100%" height="100%" fill="white"/>
 <rect x="4" y="4" width="422" height="462" fill="none" stroke="#4a76c5" stroke-width="3"/>
 <g transform="translate(15,15)">
-<path d="M 200 200 L 200 60 A 140 140 0 0 1 333.148 243.262 Z" fill="#c0392b" stroke="white" stroke-width="2"/>
-<path d="M 200 200 L 333.148 243.262 A 140 140 0 0 1 86.7376 282.29 Z" fill="#2980b9" stroke="white" stroke-width="2"/>
-<path d="M 200 200 L 86.7376 282.29 A 140 140 0 0 1 200 60 Z" fill="#27ae60" stroke="white" stroke-width="2"/>
+<path d="M 200 200 L 200 60 A 140 140 0 1 1 77.3171 267.446 Z" fill="#c0392b" stroke="white" stroke-width="2"/>
+<path d="M 200 200 L 77.3171 267.446 A 140 140 0 0 1 66.8521 156.738 Z" fill="#2980b9" stroke="white" stroke-width="2"/>
+<path d="M 200 200 L 66.8521 156.738 A 140 140 0 0 1 200 60 Z" fill="#27ae60" stroke="white" stroke-width="2"/>
 <rect x="30" y="380" width="14" height="14" fill="#c0392b"/>
 <text x="50" y="392" font-size="15" font-family="serif">Учёба</text>
 <rect x="150" y="380" width="14" height="14" fill="#2980b9"/>
